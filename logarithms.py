@@ -1,5 +1,6 @@
 import math
 from time import sleep
+import os
 
 
 
@@ -9,14 +10,19 @@ from time import sleep
 
 dict_of_logarithms = []
 
-#This function is the User Interface
 
 
             
 # Here are the functions
 
+def Error_Not_available():
+    print("""\n____________________________\nERROR: Choice not available yet
+\n____________________________""")
+    os.system('cls')
+
 def gather_number():
-#This function is used to input a number and check for the nubmer to be an integer
+#This function is used to input a number and check for the number to be an 
+#integer
     while True:
         number = input(f"please input a number: ")
         return_number = 0
@@ -52,12 +58,24 @@ def calculating_square_roots(number):
 # Here are the User Interfaces
 
 def calculating_logarithms_UI():
+    cal_log_UI_choice_string = (
+"""
+_____________________
+
+Please coose an option
+1)
+2)
+0) Exit
+""")
     while True:
-        cal_log_UI_choice = input("Please choose an option")
-        if cal_log_UI_choice == 1
+        cal_log_UI_choice = input(cal_log_UI_choice_string)
+        if cal_log_UI_choice == "1":
+           pass
+        elif cal_log_UI_choice == "2":
             pass
-        elif cal_log_UI_choice == 2
-            pass
+        elif cal_log_UI_choice == "0":
+            os.system("cls")
+            return
         else:
             print("Error, choice invalad")
 
@@ -72,21 +90,36 @@ def User_Interface():
     log_of_lower_bound = 0
     log_of_upper_bound = 0
 
+
+    os.system("cls")
+
     print("""\n\n\nWelcome to Logarithm Calculator: 
 Please use the following menu to calcuate a logarithm.\n\n\n""")
+    sleep(1.5)
 
     root_menu_string = (
 """enter the number corisponding with you choice
-1) choose a number
+
+1) Begin logarithm calculation
+
+2) View current logarithm calculation 
+
+0) Exit
 
 """)
     while True:
+        print("""\n\n _____________________\n\nMain Menu\n\n""")
         root_menu_choice = input(root_menu_string)
-        if root_menu_string == 0:
+        if root_menu_choice == "0":
             print("good bye")
+            os.system("cls")
             exit()
-        if root_menu_string == 1:
+        elif root_menu_choice == "1":
+            os.system("cls")
             calculating_logarithms_UI()
+
+        elif root_menu_choice == "2":
+            Error_Not_available()
         else:
             continue
 
