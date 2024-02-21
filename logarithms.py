@@ -2,6 +2,16 @@ import math
 from time import sleep
 import os
 
+#here are the variables 
+global_number = 0
+golbal_base_number = 0
+global_exponent = 0
+global_lower_bound = 0
+global_upper_bound = 0
+
+log_of_lower_bound = 0
+log_of_upper_bound = 0
+
 
 
 
@@ -20,7 +30,7 @@ def Error_Not_available():
 \n____________________________""")
     os.system('cls')
 
-def gather_number(optional_text):
+def gather_number(optional_text=''):
 #This function is used to input a number and check for the number to be an 
 #integer
     while True:
@@ -53,7 +63,7 @@ def convert_to_ones(number):
 
 def calculating_square_roots(number, aproximation):
     new_aproximation = (aproximation + number/aproximation) / 2
-    return number, aproximation
+    return number, round(new_aproximation, len(str(number))+5)
 
 
 
@@ -61,19 +71,27 @@ def calculating_square_roots(number, aproximation):
 # Here are the User Interfaces
 
 def calculating_logarithms_UI():
+
+    global global_number
+
+
+    if global_number != 0:
+        print(f"number you are looking at:    {global_number}")
+    
     cal_log_UI_choice_string = (
 """
 _____________________
 
 Please coose an option
-1)
+1) choose a number
 2)
 0) Exit
 """)
     while True:
         cal_log_UI_choice = input(cal_log_UI_choice_string)
         if cal_log_UI_choice == "1":
-           pass
+            global_number = gather_number()
+
         elif cal_log_UI_choice == "2":
             pass
         elif cal_log_UI_choice == "0":
@@ -84,16 +102,6 @@ Please coose an option
 
 
 def User_Interface():
-    number = 0
-    base_number = 0
-    exponent = 0
-    lower_bound = 0
-    upper_bound = 0
-
-    log_of_lower_bound = 0
-    log_of_upper_bound = 0
-
-
     os.system("cls")
 
     print("""\n\n\nWelcome to Logarithm Calculator: 
@@ -130,6 +138,6 @@ Please use the following menu to calcuate a logarithm.\n\n\n""")
 
 #program starts here
 
-#User_Interface()
-calculating_square_roots(number=35, aproximation=gather_number(
-            f"""\nA number closer to the real value will be fastest"""))
+User_Interface()
+#print(calculating_square_roots(number=35, aproximation=gather_number(
+#            f"""\nA number closer to the real value will be fastest""")))
