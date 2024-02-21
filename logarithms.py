@@ -20,11 +20,11 @@ def Error_Not_available():
 \n____________________________""")
     os.system('cls')
 
-def gather_number():
+def gather_number(optional_text):
 #This function is used to input a number and check for the number to be an 
 #integer
     while True:
-        number = input(f"please input a number: ")
+        number = input(f"please input a number {optional_text}:\n")
         return_number = 0
         try:
             return_number = int(number)
@@ -51,8 +51,11 @@ def convert_to_ones(number):
     return_number = round(return_number, len(str(number)) )
     return return_number, exponent
 
-def calculating_square_roots(number):
-    return round(math.sqrt(number),len(str(number)))
+def calculating_square_roots(number, aproximation):
+    new_aproximation = (aproximation + number/aproximation) / 2
+    return number, aproximation
+
+
 
 
 # Here are the User Interfaces
@@ -127,4 +130,6 @@ Please use the following menu to calcuate a logarithm.\n\n\n""")
 
 #program starts here
 
-User_Interface()
+#User_Interface()
+calculating_square_roots(number=35, aproximation=gather_number(
+            f"""\nA number closer to the real value will be fastest"""))
